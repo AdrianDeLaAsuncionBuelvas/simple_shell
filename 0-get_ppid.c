@@ -8,8 +8,8 @@
  */
 int main(void)
 {
-int pp_id;
-pp_id = getppid();
-printf("PPID: %d\n", pp_id);
-return (0);
+	int pp_id;
+	pp_id = getppid();
+	printf("PPID: %d\n", pp_id);
+	return (0);
 }

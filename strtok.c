@@ -11,11 +11,11 @@ char *func_strtok(char *mensaje)
 	char *delimiters = " ,!¡¿?'\"\n\t";
 	char *token;
 
-if (mensaje == NULL)
-{
-return (NULL);
-}
+	if (mensaje == NULL)
+	{
+		return (NULL);
+	}
 	token = strtok(mensaje, delimiters);
 
-return (token);
+	return (token);
 }
