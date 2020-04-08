@@ -15,7 +15,7 @@ if (mensaje == NULL)
 {
 return (NULL);
 }
-	token = strtok(mensaje, delimiters);
+token = strtok(mensaje, delimiters);
 
 return (token);
 }

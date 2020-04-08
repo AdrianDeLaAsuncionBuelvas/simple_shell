@@ -15,6 +15,10 @@ if (token == NULL)
 {
 return;
 }
+if (strcmp(token,"exit") == 0)
+{
+exit(EXIT_SUCCESS);
+}
 	childPID = fork();
 	if (childPID < 0)
 	{
@@ -34,5 +38,7 @@ if (exec < 0)
 perror("Error");
 exit(-1);
 }
+return;
 }
+
 }

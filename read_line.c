@@ -1,6 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include "shell.h"
 /**
  * get_line - Prints "$ " and wait for a command
  *
@@ -16,10 +14,10 @@ char *get_line(void)
 printf("$ ");
 characters_read = getline(&mensaje, &num_bytes, stdin);
 
-if (characters_read < 0)
+if (characters_read == EOF)
 {
-printf("Error reading input\n");
-exit(EXIT_FAILURE);
+printf("Shell closed\n");
+exit(EXIT_SUCCESS);
 }
 
 return (mensaje);
