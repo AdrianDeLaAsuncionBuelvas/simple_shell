@@ -1,4 +1,5 @@
 #include "shell.h"
+
 /**
  * execute_program - Execute a program
  * @token: Input recieved from strtok
@@ -7,49 +8,29 @@
 
 void execute_program(char *token)
 {
-	char *args[] = {token, NULL};
-	int childPID;
+	char *argv[] = {token, NULL};
+	pid_t childPID;
 	int exec;
 
-<<<<<<< HEAD
-if (token == NULL)
-{
-return;
-}
-if (strcmp(token,"exit") == 0)
-{
-exit(EXIT_SUCCESS);
-}
-=======
 	if (token == NULL)
 	{
 		return;
 	}
->>>>>>> b07ed61631a5c59c2bd4eccef352c144946506ed
+	if (strcmp(token,"exit") == 0)
+	{
+		exit(EXIT_SUCCESS);
+	}
+	if (token == NULL)
+	{
+		return;
+	}
+
 	childPID = fork();
 	if (childPID < 0)
 	{
 		printf("Error during fork\n");
 		exit(-1);
 	}
-<<<<<<< HEAD
-else if (childPID != 0)
-{
-wait(NULL);
-return;
-}
-else
-{
-exec = execve(args[0], args, NULL);
-if (exec < 0)
-{
-perror("Error");
-exit(-1);
-}
-return;
-}
-
-=======
 	else if (childPID != 0)
 	{
 		wait(NULL);
@@ -57,12 +38,13 @@ return;
 	}
 	else
 	{
-		exec = execve(args[0], args, NULL);
+		exec = execve(argv[0], argv, NULL);
 		if (exec < 0)
 		{
-			perror("Error");
-			exit(-1);
+			perror("./shell");
+			exit(EXIT_FAILURE);
 		}
+		return;
 	}
->>>>>>> b07ed61631a5c59c2bd4eccef352c144946506ed
+
 }
