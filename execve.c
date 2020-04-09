@@ -16,7 +16,7 @@ void execute_program(char *token)
 	{
 		return;
 	}
-	if (strcmp(token,"exit") == 0)
+	if (strcmp(token, "exit") == 0)
 	{
 		exit(EXIT_SUCCESS);
 	}
@@ -42,7 +42,7 @@ void execute_program(char *token)
 		if (exec < 0)
 		{
 			perror("./shell");
-			exit(EXIT_FAILURE);
+			exit(-1);
 		}
 		return;
 	}

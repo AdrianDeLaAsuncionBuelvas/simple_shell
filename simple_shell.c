@@ -10,6 +10,7 @@ int main(void)
 {
 	char *s = NULL;
 	char *tok = NULL;
+
 	do {
 		s = get_line();
 		tok = func_strtok(s);

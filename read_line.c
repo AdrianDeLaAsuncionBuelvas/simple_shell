@@ -9,7 +9,7 @@ char *get_line(void)
 {
 	ssize_t characters_read = 0;
 	size_t num_bytes = 0;
-	char *mensaje;
+	char *mensaje = NULL;
 
 	printf("my_shell$ ");
 	characters_read = getline(&mensaje, &num_bytes, stdin);
