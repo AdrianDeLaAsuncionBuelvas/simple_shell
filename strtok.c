@@ -5,22 +5,32 @@
  * @mensaje: Input recieved from user input
  * Return: The token(s)
  */
-
-char *func_strtok(char *mensaje)
+char **func_strtok(char *mensaje)
 {
-	char *delimiters = " ,-!¡¿?'\"\n\t";
+	char *delimiters = " ,!¡¿?'\"\n\t";
 	char *token;
-
+        char **array;
+        int i = 0; 
+      
 	if (mensaje == NULL)
 	{
 		return (NULL);
 	}
-	token = strtok(mensaje, delimiters);
 
-	if (token == NULL)
-	{
-		return (NULL);
-	}
+        array = malloc(strlen(mensaje) + 1024);
+
 	token = strtok(mensaje, delimiters);
-	return (token);
+        array[i] = token;
+
+        while (token)
+        {
+          i++;          
+          token = strtok(NULL, delimiters);
+          array[i] = token;
+        }
+
+        i++;
+        array[i] = NULL;
+
+	return (array);
 }

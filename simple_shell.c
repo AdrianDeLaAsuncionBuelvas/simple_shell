@@ -9,15 +9,15 @@
 int main(void)
 {
 	char *s = NULL;
-	char *tok = NULL;
+	char **tok = NULL;
 
-	do {
+	while (1) {
 		s = get_line();
 		tok = func_strtok(s);
 		execute_program(tok);
 		free(s);
-		free(tok);
-	} while (EOF != 0);
+                free(tok);		
+	}
 
-	return (0);
+	exit(EXIT_SUCCESS);
 }

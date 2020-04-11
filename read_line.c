@@ -11,19 +11,20 @@ char *get_line(void)
 	size_t num_bytes = 0;
 	char *mensaje = NULL;
 
-	printf("my_shell$ ");
+	printf("$ ");
 	characters_read = getline(&mensaje, &num_bytes, stdin);
 
 	if (characters_read == EOF)
 	{
-		printf("Shell closed\n");
+		printf("\n");
+                free(mensaje);
 		exit(EXIT_SUCCESS);
 	}
-	if (characters_read < 0)
-	{
-		printf("Error reading input\n");
-		exit(EXIT_FAILURE);
-	}
 
+	if (strcmp(mensaje,"exit\n") == 0)
+	{
+                free(mensaje);		
+		exit(EXIT_SUCCESS);
+	}
 	return (mensaje);
 }

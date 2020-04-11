@@ -11,7 +11,7 @@
 #include <fcntl.h>
 
 char *get_line(void);
-char *func_strtok(char *mensaje);
-void execute_program(char *token);
+char **func_strtok(char *mensaje);
+void execute_program(char **token);
 
 #endif

@@ -6,45 +6,36 @@
  * Return: Nothing
  */
 
-void execute_program(char *token)
-{
-	char *argv[] = {token, NULL};
-	pid_t childPID;
-	int exec;
+void execute_program(char **token)
+{	
+        pid_t childPID;
+        int exec;
 
-	if (token == NULL)
-	{
-		return;
-	}
-	if (strcmp(token, "exit") == 0)
-	{
-		exit(EXIT_SUCCESS);
-	}
-	if (token == NULL)
+	if (token[0] == NULL)
 	{
 		return;
 	}
 
 	childPID = fork();
+
 	if (childPID < 0)
 	{
 		printf("Error during fork\n");
-		exit(-1);
+		exit(EXIT_FAILURE);
 	}
 	else if (childPID != 0)
 	{
-		wait(NULL);
+		wait(NULL);            
 		return;
 	}
 	else
 	{
-		exec = execve(argv[0], argv, NULL);
+		exec = execve(token[0], token, NULL);
 		if (exec < 0)
 		{
-			perror("./shell");
-			exit(-1);
+			perror("Error");
+			exit(EXIT_FAILURE);
 		}
 		return;
 	}
-
 }
