@@ -7,7 +7,7 @@
  */
 
 void execute_program(char **token)
-{	
+{
         pid_t childPID;
         int exec;
 
@@ -25,7 +25,7 @@ void execute_program(char **token)
 	}
 	else if (childPID != 0)
 	{
-		wait(NULL);            
+		wait(NULL);
 		return;
 	}
 	else

@@ -10,8 +10,8 @@ char **func_strtok(char *mensaje)
 	char *delimiters = " ,!¡¿?'\"\n\t";
 	char *token;
         char **array;
-        int i = 0; 
-      
+        int i = 0;
+
 	if (mensaje == NULL)
 	{
 		return (NULL);
@@ -24,7 +24,7 @@ char **func_strtok(char *mensaje)
 
         while (token)
         {
-          i++;          
+          i++;
           token = strtok(NULL, delimiters);
           array[i] = token;
         }

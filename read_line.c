@@ -23,7 +23,7 @@ char *get_line(void)
 
 	if (strcmp(mensaje,"exit\n") == 0)
 	{
-                free(mensaje);		
+                free(mensaje);
 		exit(EXIT_SUCCESS);
 	}
 	return (mensaje);
