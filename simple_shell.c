@@ -16,7 +16,7 @@ int main(void)
 		tok = func_strtok(s);
 		execute_program(tok);
 		free(s);
-                free(tok);		
+                free(tok);
 	}
 
 	exit(EXIT_SUCCESS);

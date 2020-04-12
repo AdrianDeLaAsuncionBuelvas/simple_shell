@@ -7,7 +7,7 @@
  */
 
 void execute_program(char **token)
-{	
+{
         pid_t childPID;
         int exec;
 
@@ -25,7 +25,7 @@ void execute_program(char **token)
 	}
 	else if (childPID != 0)
 	{
-		wait(NULL);            
+		wait(NULL);
 		return;
 	}
 	else
@@ -33,7 +33,7 @@ void execute_program(char **token)
 		exec = execve(token[0], token, NULL);
 		if (exec < 0)
 		{
-			perror("Error");
+			printf("./hsh: 1: %s: not found\n", token[0]);
 			exit(EXIT_FAILURE);
 		}
 		return;
