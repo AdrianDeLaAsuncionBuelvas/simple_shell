@@ -14,7 +14,6 @@ extern char **environ;
 
 char *get_line(void);
 char **func_strtok(char *mensaje);
-void execute_program(char **token);
 int _env(int cont);
-
+void execute_program(char **token, char *argv, int number);
 #endif

@@ -8,8 +8,8 @@
 char **func_strtok(char *buffer)
 {
 	char *delimiters = " ,!¡¿?'\"\n\t";
-	char *token, *ev = "";
-        char **array;
+	char *token = NULL, *ev = "";
+        char **array = NULL;
         int i = 0;
 
 	if (buffer == NULL)
@@ -22,14 +22,6 @@ char **func_strtok(char *buffer)
 	token = strtok(buffer, delimiters);
         array[i] = token;
 
-	ev = "env";
-	if (strcmp(ev, array[0]) == 0)
-	{
-		free(buffer);
-		_env(i);
-	}
-	ev = "1";
-
         while (token)
         {
 		i++;
@@ -37,6 +29,13 @@ char **func_strtok(char *buffer)
 		array[i] = token;
         }
 
+	ev = "env";
+	if (strcmp(buffer, ev) == 0)
+	{
+		free(buffer);
+		_env(i);
+	}
+	ev = "1";
         i++;
         array[i] = NULL;
 

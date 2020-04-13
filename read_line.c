@@ -35,5 +35,13 @@ char *get_line(void)
                 free(buffer);
 		exit(EXIT_SUCCESS);
 	}
+
+        if (strcmp(buffer,"clear\n") == 0)
+        {
+                free(buffer);
+                printf("\033[H\033[J");
+                return (NULL);
+        }
+
 	return (buffer);
 }
