@@ -8,8 +8,8 @@
 char **func_strtok(char *mensaje)
 {
 	char *delimiters = " ,!¡¿?'\"\n\t";
-	char *token;
-        char **array;
+	char *token = NULL;
+        char **array = NULL;
         int i = 0;
 
 	if (mensaje == NULL)

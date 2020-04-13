@@ -38,9 +38,9 @@ char *get_line(void)
         
         if (strcmp(mensaje,"clear\n") == 0)
         {
-                free(mensaje);
-                printf("\e[1;1H\e[2J");
+                free(mensaje);               
+                printf("\033[H\033[J");
                 return (NULL);
-        }        
+        }    
 	return (mensaje);
 }
