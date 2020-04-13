@@ -28,7 +28,6 @@ char **func_strtok(char *mensaje)
           token = strtok(NULL, delimiters);
           array[i] = token;
         }
-
         i++;
         array[i] = NULL;
 

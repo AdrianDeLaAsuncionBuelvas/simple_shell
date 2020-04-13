@@ -35,5 +35,12 @@ char *get_line(void)
                 free(mensaje);
 		exit(EXIT_SUCCESS);
 	}
+        
+        if (strcmp(mensaje,"clear\n") == 0)
+        {
+                free(mensaje);
+                printf("\e[1;1H\e[2J");
+                return (NULL);
+        }        
 	return (mensaje);
 }

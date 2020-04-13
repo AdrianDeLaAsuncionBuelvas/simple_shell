@@ -6,18 +6,24 @@
  * Return: 0
  */
 
-int main(void)
+int main(int argc __attribute__((unused)), char *argv[])
 {
 	char *s = NULL;
 	char **tok = NULL;
+        int number_prompts = 0;
+        int i;        
 
 	while (1) {
+                number_prompts = 0;                
 		s = get_line();
-		tok = func_strtok(s);
-		execute_program(tok);
-		free(s);
-                free(tok);
+                if (s != NULL)
+                {
+                   number_prompts++;
+      		   tok = func_strtok(s);
+		   execute_program(tok, argv[0], number_prompts);                
+		   free(s);  
+                   free(tok);
+                }
 	}
-
 	exit(EXIT_SUCCESS);
 }

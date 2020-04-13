@@ -6,26 +6,32 @@
  * Return: Nothing
  */
 
-void execute_program(char **token)
+void execute_program(char **token, char *argv, int number)
 {
         pid_t childPID;
         int exec;
+        int i;
 
 	if (token[0] == NULL)
-	{
-		return;
+	{              
+	    return;
 	}
 
 	childPID = fork();
 
 	if (childPID < 0)
 	{
-		printf("Error during fork\n");
+		printf("Error during fork\n");                  
+                   for (i = 0; token[i]; i++)
+                   {
+                      free(token[i]);
+                   }
+                   free(token);
 		exit(EXIT_FAILURE);
 	}
 	else if (childPID != 0)
 	{
-		wait(NULL);
+		wait(NULL);                                
 		return;
 	}
 	else
@@ -33,9 +39,20 @@ void execute_program(char **token)
 		exec = execve(token[0], token, NULL);
 		if (exec < 0)
 		{
-			printf("./hsh: 1: %s: not found\n", token[0]);
-			exit(EXIT_FAILURE);
-		}
-		return;
+		   printf("%s: %d: %s: not found\n", argv, number, token[0]);
+
+                   for (i = 0; token[i]; i++)
+                   {
+                      free(token[i]);
+                   }
+                   free(token);
+		   exit(EXIT_FAILURE);
+		}                
+                   for (i = 0; token[i]; i++)
+                   {
+                      free(token[i]);
+                   }
+                   free(token);
+                   exit(EXIT_SUCCESS);		
 	}
 }
