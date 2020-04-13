@@ -10,8 +10,11 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
+extern char **environ;
+
 char *get_line(void);
 char **func_strtok(char *mensaje);
 void execute_program(char **token);
+int _env(int cont);
 
 #endif

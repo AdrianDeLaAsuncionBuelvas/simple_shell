@@ -8,14 +8,14 @@
 
 int main(void)
 {
-	char *s = NULL;
+	char *str = NULL;
 	char **tok = NULL;
 
 	while (1) {
-		s = get_line();
-		tok = func_strtok(s);
+		str = get_line();
+		tok = func_strtok(str);
 		execute_program(tok);
-		free(s);
+		free(str);
                 free(tok);
 	}
 

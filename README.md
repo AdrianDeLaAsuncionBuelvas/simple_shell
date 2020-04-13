@@ -16,6 +16,11 @@ Final project of the quarter, make a shell following certain rules and requireme
 * All your files will be compiled on Ubuntu 14.04 LTS
 * Your C programs and functions will be compiled with gcc 4.8.4 using the flags -Wall -Werror -Wextra and -pedantic
 
+### Compilation
+Your shell will be compiled this way:
+
+`gcc -Wall -Werror -Wextra -pedantic *.c -o hsh`
+
 
 ### Libraries
 Use this data Librarie for this project:
@@ -34,12 +39,8 @@ These are the Prototypes of Functions to be used:
 
 `char *get_line(void);
 char *func_strtok(char *mensaje);
-void execute_program(char *token);`
-
-### Compilation
-Your shell will be compiled this way:
-
-`gcc -Wall -Werror -Wextra -pedantic *.c -o hsh`
+void execute_program(char *token);
+`
 
 ### Testing
 Your shell should work like this in interactive mode:
@@ -49,4 +50,5 @@ Your shell should work like this in interactive mode:
 hsh main.c shell.c
 ($)
 ($) exit
-$`
+$
+`

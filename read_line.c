@@ -9,7 +9,7 @@ char *get_line(void)
 {
 	ssize_t characters_read = 0;
 	size_t num_bytes = 0;
-	char *mensaje = NULL;
+	char *buffer = NULL;
         int val_isatty = 0;
 
         val_isatty = isatty(STDIN_FILENO);
@@ -18,7 +18,7 @@ char *get_line(void)
         {
 	  printf("$ ");
         }
-	characters_read = getline(&mensaje, &num_bytes, stdin);
+	characters_read = getline(&buffer, &num_bytes, stdin);
 
 	if (characters_read == EOF)
 	{
@@ -26,14 +26,14 @@ char *get_line(void)
             {
 		printf("\n");
             }
-                free(mensaje);
+                free(buffer);
 		exit(EXIT_SUCCESS);
 	}
 
-	if (strcmp(mensaje,"exit\n") == 0)
+	if (strcmp(buffer,"exit\n") == 0)
 	{
-                free(mensaje);
+                free(buffer);
 		exit(EXIT_SUCCESS);
 	}
-	return (mensaje);
+	return (buffer);
 }
