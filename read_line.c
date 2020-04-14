@@ -5,24 +5,22 @@
  * Return: The read command or error if not
  *
  **/
-char *get_line(void)
+char *get_line(int isatty_value)
 {
 	ssize_t characters_read = 0;
 	size_t num_bytes = 0;
 	char *mensaje = NULL;
-	int val_isatty = 0;
 
-	val_isatty = isatty(STDIN_FILENO);
-
-	if (val_isatty == 1)
+	if (isatty_value == 1)
 	{
 		printf("$ ");
 	}
+
 	characters_read = getline(&mensaje, &num_bytes, stdin);
 
 	if (characters_read == EOF)
 	{
-		if (val_isatty == 1)
+		if (isatty_value == 1)
 		{
 			printf("\n");
 		}

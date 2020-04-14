@@ -1,13 +1,10 @@
 #include "shell.h"
-
 /**
  * execute_program - Execute a program
  * @token: Input recieved from strtok
- * @argv: Argument Input
- * @number: Number of times entered by console
+ * Return: Nothing
  */
-
-void execute_program(char **token, char *argv, int number)
+void execute_program(char **token, char *argv, int number, int isatty_value, char **envi)
 {
 	pid_t childPID;
 	int exec = 0, val_builtin = 0;
@@ -15,7 +12,7 @@ void execute_program(char **token, char *argv, int number)
 	if (token[0] == NULL)
 		return;
 
-	val_builtin = is_buitin(token);
+	val_builtin = is_buitin(token, envi);
 	if (val_builtin == 1)
 	{
 		free_memory(token);
@@ -39,8 +36,13 @@ void execute_program(char **token, char *argv, int number)
 		exec = execve(token[0], token, NULL);
 		if (exec < 0)
 		{
+			if (isatty_value == 1)
+			{
+				printf("%s: No such file or directory\n", argv);
+				free(token);
+				exit(EXIT_SUCCESS);
+			}
 			printf("%s: %d: %s: not found\n", argv, number, token[0]);
-
 			free(token);
 			exit(EXIT_FAILURE);
 		}
