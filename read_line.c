@@ -9,16 +9,16 @@ char *get_line(void)
 {
 	ssize_t characters_read = 0;
 	size_t num_bytes = 0;
-	char *buffer = NULL;
-        int val_isatty = 0;
+	char *mensaje = NULL;
+	int val_isatty = 0;
 
-        val_isatty = isatty(STDIN_FILENO);
+	val_isatty = isatty(STDIN_FILENO);
 
-        if (val_isatty == 1)
-        {
+	if (val_isatty == 1)
+	{
 		printf("$ ");
-        }
-	characters_read = getline(&buffer, &num_bytes, stdin);
+	}
+	characters_read = getline(&mensaje, &num_bytes, stdin);
 
 	if (characters_read == EOF)
 	{
@@ -26,22 +26,8 @@ char *get_line(void)
 		{
 			printf("\n");
 		}
-                free(buffer);
+		free(mensaje);
 		exit(EXIT_SUCCESS);
 	}
-
-	if (strcmp(buffer, "exit\n") == 0)
-	{
-                free(buffer);
-		exit(EXIT_SUCCESS);
-	}
-
-        if (strcmp(buffer, "clear\n") == 0)
-        {
-                free(buffer);
-                printf("\033[H\033[J");
-                return (NULL);
-        }
-
-	return (buffer);
+	return (mensaje);
 }
