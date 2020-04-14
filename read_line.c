@@ -16,27 +16,27 @@ char *get_line(void)
 
         if (val_isatty == 1)
         {
-	  printf("$ ");
+		printf("$ ");
         }
 	characters_read = getline(&buffer, &num_bytes, stdin);
 
 	if (characters_read == EOF)
 	{
-            if (val_isatty == 1)
-            {
-		printf("\n");
-            }
+		if (val_isatty == 1)
+		{
+			printf("\n");
+		}
                 free(buffer);
 		exit(EXIT_SUCCESS);
 	}
 
-	if (strcmp(buffer,"exit\n") == 0)
+	if (strcmp(buffer, "exit\n") == 0)
 	{
                 free(buffer);
 		exit(EXIT_SUCCESS);
 	}
 
-        if (strcmp(buffer,"clear\n") == 0)
+        if (strcmp(buffer, "clear\n") == 0)
         {
                 free(buffer);
                 printf("\033[H\033[J");

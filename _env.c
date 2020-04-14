@@ -14,7 +14,7 @@ int _env(int num)
 	if (num > 1)
 	{
 		perror("Error");
-		return(-1);
+		return (-1);
 	}
 	for (i = 0; environ[i] != NULL; i++)
 	{
