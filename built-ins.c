@@ -5,13 +5,13 @@ int is_buitin(char **token, char **envi)
 	int chdir_value = 0;
 	int i;
 
-	if (strcmp(token[0], "exit") == 0 && !(token[1]))
+	if (_strcmp(token[0], "exit") == 0 && !(token[1]))
 	{
 		free_memory(token);
 		exit(EXIT_SUCCESS);
 	}
 
-	if (strcmp(token[0], "cd") == 0)
+	if (_strcmp(token[0], "cd") == 0)
 	{
 		if (!token[1])
 		{
@@ -34,7 +34,7 @@ int is_buitin(char **token, char **envi)
 		return (1);
 	}
 
-	if (strcmp(token[0], "env") == 0 && !(token[1]))
+	if (_strcmp(token[0], "env") == 0 && !(token[1]))
 	{
 		for (i = 0; envi[i]; i++)
 		{

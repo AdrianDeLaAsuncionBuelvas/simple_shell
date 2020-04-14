@@ -17,7 +17,7 @@ char **func_strtok(char *mensaje)
 		return (NULL);
 	}
 
-	array = malloc(strlen(mensaje) + 1024);
+	array = malloc(_strlen(mensaje) + 1024);
 
 	token = strtok(mensaje, delimiters);
 	array[i] = token;
