@@ -3,15 +3,15 @@
 /**
  * _env - print the current environment.
  *
- * @cont:
+ * @num: Numers of arguments received for the getline
  *
  * Return:  0
  */
-int _env(int cont)
+int _env(int num)
 {
 	int i = 0, len = 0;
 
-	if (cont > 1)
+	if (num > 1)
 	{
 		perror("Error");
 		return(-1);

@@ -1,0 +1,175 @@
+.TH Simple Shell manpage "13 April 2020" "version 1.0"
+.br
+.SH NAME
+hsh \- Holberton-Simple Shell
+.SH SYNOPSIS
+.B hsh
+[Options] [More Options]
+.br
+
+.B #include <stdio.h>
+.br
+.B #include <stdlib.h>
+.br
+.B #include <sys/types.h>
+.br
+.B #include <unistd.h>
+.br
+.B #include <sys/wait.h>
+.br
+.B #include <string.h>
+.br
+.B #include <sys/stat.h>
+.br
+.B #include <fcntl.h>
+.br
+
+.B char *get_line(void);
+.br
+.B char **func_strtok(char .*mensaje);
+.br
+.B void execute_program(char **token, char *argv, int number);
+.br
+.B int _env(int .PPcont);
+
+.SH DESCRIPTION
+functions of our shell:
+
+.br
+.B *get_line()
+Get the data sent by console. return the buffer.
+.br
+.B **func_strtok()
+Get buffer from getline, evaluate and concatenate. return the Token(s).
+.br
+.B void execute_program()
+Function where programs are created.
+**token \- Input recieved from strtok. *argv \- Arguments that send in the main.
+number \- Numbers of times executed.
+.br
+
+.B Note:
+Some commands that our shell accepts.
+
+.B ls
+\-list files of current path
+.br
+.B echo
+\-print arguments that you send
+.br
+.B pwd
+\-shows the current route where we are.
+.br
+.B clear
+\-clear the terminal screen
+
+.SH OPTIONS
+In addition to the single character shell options. You can also interpret the following options when invoked.
+.br
+.BI -l
+list and show permissions for each file.
+.br
+.BI -1
+show the file in of form organized
+.br
+.BI cd ..
+change the current directory
+.br
+
+.SH GRAMMAR
+This shell is able to receive commands, options and arguments. The very first word typed in the command line will be the argument 0 and it will be executed as a command.
+.Sh BUILT IN
+This simple_shell has two working built in:
+.br
+.Nm env
+which prints all the environment variables and
+.Nm exit
+which is one of the options to exit the shell.
+.br
+.Sh SIGNALS
+This simple_shell captures the Ctrl + C signal but it hasn't effect on simple_shell.
+.br
+.Sh Other types of data
+This simple_shell exits if EOF (Ctrl + D) is captured.
+.br
+
+.SH EXAMPLE
+.B #include <stdio.h>
+.br
+.B #include <stdlib.h>
+.br
+.B #include <sys/types.h>
+.br
+.B #include <unistd.h>
+.br
+.B #include <sys/wait.h>
+.br
+.B #include <string.h>
+.br
+.B #include <sys/stat.h>
+.br
+.B #include <fcntl.h>
+.br
+
+.EX
+int main(int argc __attribute__((unused)), char **argv)
+{
+	char *str = NULL;
+	char **tok = NULL;
+        int number_prompts = 0;
+
+	while (1) {
+		str = get_line();
+                if (str != NULL)
+                {
+			number_prompts++;
+			tok = func_strtok(str);
+			execute_program(tok, argv[0], number_prompts);
+			free(str);
+			free(tok);
+                }
+	}
+	exit(EXIT_SUCCESS);
+}
+
+.SH TESTING
+Your shell should work like this in interactive mode:
+.br
+.EX
+$ ./hsh
+($) /bin/ls
+hsh main.c shell.c
+($)
+($) exit
+$
+.br
+
+
+But also in non-interactive mode:
+.br
+.EX
+$ echo "/bin/ls" | ./hsh
+hsh main.c shell.c test_ls_2
+$
+$ cat test_ls_2
+/bin/ls
+/bin/ls
+$
+$ cat test_ls_2 | ./hsh
+hsh main.c shell.c test_ls_2
+hsh main.c shell.c test_ls_2
+$
+
+
+.SH FILES
+Los ficheros que necesita la orden/función Por ejemplo la orden passwd(1)
+utiliza el fichero /etc/passwd.
+.SH SEE ALSO
+ls(), stat(), chmod(), access(), chdir(), close(), closedir(), execve(), exit(), fflush(), fork(), free(), getcwd(), getline(), isatty(), kill(), malloc(), open(), opendir(), perror(), read(), readdir(), signal(), stat(), lstat(), fstat(), strtok(), wait(), waitpid(), wait3(), wait4(), write().
+.br
+.SH VERSIONS
+manpage "13 April 2020" "version 1.0"
+.SH AUTHOR
+Eduardo Vega 1643@holbertonschool.com
+.br
+Adrian De La Asuncion 1550@holbertonschool.com

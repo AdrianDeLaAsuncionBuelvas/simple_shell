@@ -3,6 +3,8 @@
 /**
  * execute_program - Execute a program
  * @token: Input recieved from strtok
+ * @argv: Arguments that send in the main
+ * @number: Numbers of times executed.
  * Return: Nothing
  */
 
@@ -10,7 +12,7 @@ void execute_program(char **token, char *argv, int number)
 {
         pid_t childPID;
         int exec;
-        int i;
+        int i = 0;
         int chdir_value;
 
 	if (token[0] == NULL)
@@ -62,7 +64,6 @@ void execute_program(char **token, char *argv, int number)
 		if (exec < 0)
 		{
 		   printf("%s: %d: %s: not found\n", argv, number, token[0]);
-
                    for (i = 0; token[i]; i++)
                    {
                       free(token[i]);

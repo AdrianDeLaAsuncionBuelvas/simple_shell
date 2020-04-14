@@ -13,7 +13,6 @@ int main(int argc __attribute__((unused)), char **argv)
         int number_prompts = 0;
 
 	while (1) {
-                number_prompts = 0;
 		str = get_line();
                 if (str != NULL)
                 {
