@@ -10,10 +10,10 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-extern char **environ;
-
 char *get_line(void);
 char **func_strtok(char *mensaje);
-int _env(int cont);
 void execute_program(char **token, char *argv, int number);
+int is_buitin(char **token);
+void free_memory(char **token);
+
 #endif
