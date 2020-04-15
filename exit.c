@@ -2,5 +2,5 @@
 
 void exit_function()
 {
-	exit(EXIT_SUCCESS);
+	kill(getpid(), SIGTERM);
 }

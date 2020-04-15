@@ -9,6 +9,7 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <signal.h>
 
 char *get_line(int isatty_value);
 char **func_strtok(char *mensaje);

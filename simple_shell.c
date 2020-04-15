@@ -22,7 +22,7 @@ int main(int argc __attribute__((unused)), char **av, char **env)
 		if (_strcmp(s, "exit\n") == 0)
 		{
 			free(s);
-			exit(EXIT_SUCCESS);
+			exit(0);
 		}
 
 		if (s != NULL)
