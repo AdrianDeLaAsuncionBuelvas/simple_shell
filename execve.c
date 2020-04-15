@@ -13,6 +13,12 @@ void execute_program(char **token, char *argv, int number, int isatty_value, cha
 	if (token[0] == NULL)
 		return;
 
+	if (_strcmp(token[0], "exit") == 0)
+	{
+		free_memory(token);
+		exit(0);
+	}
+
 	val_builtin = is_buitin(token, envi);
 	if (val_builtin == 1)
 	{
