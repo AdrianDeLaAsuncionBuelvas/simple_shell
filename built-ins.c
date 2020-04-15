@@ -8,7 +8,7 @@ int is_buitin(char **token, char **environ)
 	if(_strcmp(token[0], "exit") == 0 && !token[1])
 	{
 		free_memory(token);
-		exit_function();
+		exit(0);
 	}
 
 	if (_strcmp(token[0], "cd") == 0)

@@ -19,12 +19,6 @@ int main(int argc __attribute__((unused)), char **av, char **env)
 		val_isatty = isatty(STDIN_FILENO);
 		s = get_line(val_isatty);
 
-		/*if (_strcmp(s, "exit\n") == 0)
-		  {
-		  free(s);
-		  exit(0);
-		  }*/
-
 		if (s != NULL)
 		{
 			number_prompts++;
