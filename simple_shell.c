@@ -7,7 +7,7 @@
  * Return: Nothing
  */
 
-int main(int argc __attribute__((unused)), char **argv, char **env)
+int main(int argc __attribute__((unused)), char **av, char **env)
 {
 	char *s = NULL;
 	char **tok = NULL;
@@ -23,12 +23,10 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 		{
 			number_prompts++;
 			tok = func_strtok(s);
-			execute_program(tok, argv[0], number_prompts, val_isatty, env);
+			execute_program(tok, av[0], number_prompts, val_isatty, env);
 			free(s);
 			free(tok);
 		}
-		s = NULL;
-		tok = NULL;
 		val_isatty = 0;
 	}
 	return (0);

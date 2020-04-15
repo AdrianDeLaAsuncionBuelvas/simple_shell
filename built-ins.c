@@ -1,14 +1,14 @@
 #include "shell.h"
 
-int is_buitin(char **token, char **envi)
+int is_buitin(char **token, char **environ)
 {
 	int chdir_value = 0;
 	int i;
 
-	if (_strcmp(token[0], "exit") == 0 && !(token[1]))
+	if(_strcmp(token[0], "exit") == 0 && !token[1])
 	{
 		free_memory(token);
-		exit(EXIT_SUCCESS);
+		exit_function();
 	}
 
 	if (_strcmp(token[0], "cd") == 0)
@@ -36,9 +36,9 @@ int is_buitin(char **token, char **envi)
 
 	if (_strcmp(token[0], "env") == 0 && !(token[1]))
 	{
-		for (i = 0; envi[i]; i++)
+		for (i = 0; environ[i]; i++)
 		{
-			printf("%s\n", envi[i]);
+			printf("%s\n", environ[i]);
 		}
 		return (1);
 	}

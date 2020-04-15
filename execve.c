@@ -7,7 +7,8 @@
 void execute_program(char **token, char *argv, int number, int isatty_value, char **envi)
 {
 	pid_t childPID;
-	int exec = 0, val_builtin = 0;
+	int exec = 0;
+	int val_builtin = 0;
 
 	if (token[0] == NULL)
 		return;
