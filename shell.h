@@ -14,12 +14,16 @@
 
 char *get_line(int isatty_value);
 char **func_strtok(char *mensaje);
-void execute_program(char **token, char *argv, int number, int isatty_value, char **envi, char **path);
+void execute_program(char **token, char *argv, int number, int isatty_value, char **envi);
 int is_buitin(char **token, char **environ);
 void free_memory(char **token);
 int _strlen(char *s);
 int _strcmp(char *s1, char *s2);
 char *_strcat(char *src, char *dest);
 char **get_path();
+int execute_path(char **token, char **path, char **envi);
+char *_strdup(char *str);
+char *_getenv(const char *name);
+extern char **environ;
 
 #endif
