@@ -15,7 +15,7 @@ void execute_program(char **token, char *argv, int number, int isatty_value, cha
 	if (token[0] == NULL)
 		return;
 
-	val_builtin = is_buitin(token, envi);
+	val_builtin = is_buitin(token);
 	if (val_builtin == 1)
 	{
 		return;
@@ -37,25 +37,20 @@ void execute_program(char **token, char *argv, int number, int isatty_value, cha
 	{
 		path = get_path();
 		exec_path = execute_path(token, path, envi);
-		/*exec = execve(token[0], token, NULL);*/
 		if (exec_path < 0)
 		{
-			/*path = get_path();*/
 			exec = execve(token[0], token, NULL);
 			if (exec != 0)
 			{
 				if (isatty_value == 1)
 				{
 					printf("%s: No such file or directory\n", argv);
-					/*free(token);*/
 					exit(EXIT_FAILURE);
 				}
 				printf("%s: %d: %s: not found\n", argv, number, token[0]);
-				/*free(token);*/
 				exit(EXIT_FAILURE);
 			}
 		}
-		/*free_memory(token);*/
 		exit(EXIT_SUCCESS);
 	}
 }

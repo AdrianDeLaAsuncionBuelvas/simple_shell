@@ -11,10 +11,10 @@ int execute_path(char **token, char **path, char **envi)
 	int forking;
 	int error;
 
-	/*if (path == NULL)
-	  {
-	  path[0] = ".";
-	  }*/
+	if (path == NULL)
+	{
+		path[0] = ".";
+	}
 
 	for (i = 0; path[i]; i++)
 	{

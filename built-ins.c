@@ -1,6 +1,6 @@
 #include "shell.h"
 
-int is_buitin(char **token, char **environ)
+int is_buitin(char **token)
 {
 	int chdir_value = 0;
 	int i;
