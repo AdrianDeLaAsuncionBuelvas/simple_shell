@@ -9,6 +9,8 @@ void execute_program(char **token, char *argv, int number, int isatty_value, cha
 	pid_t childPID;
 	int exec = 0;
 	int val_builtin = 0;
+	int exec_path = 0;
+	char **path;
 
 	if (token[0] == NULL)
 		return;
@@ -33,20 +35,27 @@ void execute_program(char **token, char *argv, int number, int isatty_value, cha
 	}
 	else
 	{
-		exec = execve(token[0], token, NULL);
-		if (exec < 0)
+		path = get_path();
+		exec_path = execute_path(token, path, envi);
+		/*exec = execve(token[0], token, NULL);*/
+		if (exec_path < 0)
 		{
-			if (isatty_value == 1)
+			/*path = get_path();*/
+			exec = execve(token[0], token, NULL);
+			if (exec != 0)
 			{
-				printf("%s: No such file or directory\n", argv);
-				free(token);
-				exit(EXIT_SUCCESS);
+				if (isatty_value == 1)
+				{
+					printf("%s: No such file or directory\n", argv);
+					/*free(token);*/
+					exit(EXIT_FAILURE);
+				}
+				printf("%s: %d: %s: not found\n", argv, number, token[0]);
+				/*free(token);*/
+				exit(EXIT_FAILURE);
 			}
-			printf("%s: %d: %s: not found\n", argv, number, token[0]);
-			free(token);
-			exit(EXIT_FAILURE);
 		}
-		free_memory(token);
+		/*free_memory(token);*/
 		exit(EXIT_SUCCESS);
 	}
 }

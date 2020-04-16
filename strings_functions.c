@@ -45,6 +45,12 @@ char *_strcat(char *src, char *dest)
 	int j;
 	char *concatenated;
 
+	if (src == NULL)
+		src = "";
+
+	if (dest == NULL)
+		dest = "";
+
 	concatenated = malloc(1 + _strlen(src) + _strlen(dest));
 
 	for (i = 0; src[i] != '\0'; i++)
@@ -59,4 +65,60 @@ char *_strcat(char *src, char *dest)
 	concatenated[i + j] = '\0';
 
 	return (concatenated);
+}
+
+char *_getenv(const char *name)
+{
+	char **env;
+	char *aux, *token, *value;
+	int size;
+	size = _strlen((char *) name);
+	for (env = environ; *env; ++env)
+	{
+		aux = _strdup(*env);
+		token = strtok(aux, "=");
+		if (token == NULL)
+		{
+			free(aux);
+			return (NULL);
+		}
+		if (_strlen(token) != size)
+		{
+			free(aux);
+			continue;
+		}
+		if (_strcmp((char *) name, aux) == 0)
+		{
+			token = strtok(NULL, "=");
+			value = _strdup(token);
+			free(aux);
+			return (value);
+		}
+		free(aux);
+	}
+	return (NULL);
+}
+
+char *_strdup(char *str)
+{
+	char *ptr;
+	int i;
+	int j;
+
+	if (str == NULL)
+		return (NULL);
+
+	for (j = 0; str[j] != '\0'; j++)
+		;
+
+	ptr = (char *)malloc(sizeof(char) * (j + 1));
+
+	if (ptr == NULL)
+		return (NULL);
+
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		ptr[i] = str[i];
+	}
+	return (ptr);
 }
