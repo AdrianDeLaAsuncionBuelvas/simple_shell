@@ -1,7 +1,4 @@
-#include <dirent.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "shell.h"
 
 /*Esto es un prototipo. Hay que adaptarlo a la shell*/
 /* Se puede comprobar el resultado de este programa con la shell propia de Linux poniendo: which nombre_comando. Ejemplo: which ls */
@@ -32,12 +29,16 @@ char **get_path()
 	return (array_dirs); /*Retornamos los directorios del path como tokens almacenados en un doble puntero*/
 }
 
-int main (void)
+int main (int ac __attribute__((unused)), char **av, char **env)
 {
 	char **dir_path = get_path(); /*Creamos una variable donde almacenar el path en tokens invocando la función get_path()*/
 	struct dirent *path_dirs;
 	int i;
+	int exec = 0;
 	DIR *dr;
+	char *concat;
+	char *command_to_execute;
+	int forking;
 
 	/*Realiza una búsqueda por cada uno de los directorios del path usando un for*/
 
@@ -54,17 +55,37 @@ int main (void)
 
 		while ((path_dirs = readdir(dr)) != NULL)   /*Lee un directorio con readdir*/
 		{
-			if (strcmp(path_dirs->d_name, "ls") == 0) /*En las comillas poner nombre de un ejecutable. Compilar y correr"*/
+			if (_strcmp(path_dirs->d_name, av[1]) == 0) /*En las comillas poner nombre de un ejecutable. Compilar y correr"*/
 			{
-				printf("Encontrado en: %s\n", dir_path[i]);
+				concat = _strcat(dir_path[i], "/");
+				command_to_execute = _strcat(concat, av[1]);
+				printf("Intentando ejecutar %s...\n", command_to_execute);
+
+				forking = fork();
+				if (forking < 0)
+				{
+					printf("Error forking\n");
+					exit (1);
+				}
+				else if (forking != 0)
+				{
+					wait(NULL);
+				}
+				else
+				{
+					exec = execve(command_to_execute, av, env);
+					if (exec < 0)
+						printf("Error ejecutando %s\n", av[1]);
+				}
 				closedir(dr);   /*Si encuentra, avisa, cierra el directorio con closedir y se sale (se cierra el ciclo)*/
 				return (0);
 			}
+
 		}
 		closedir(dr); /*Si no encuentra el ejecutable en un directorio, lo cierra y pasa al siguiente (se repite el ciclo)*/
 	}
 
-	printf("No encontrado\n"); /*Si al final no encuentra nada, avisa. Ya el directorio fue cerrado anteriormente en el ciclo*/
+	printf("Programa no encontrado\n"); /*Si al final no encuentra nada, avisa. Ya el directorio fue cerrado anteriormente en el ciclo*/
 
 	return (0);
 }

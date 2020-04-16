@@ -1,3 +1,4 @@
+#include "shell.h"
 /**
  * _strcmp - Compares two strings
  * @s1: The string to test
@@ -30,4 +31,32 @@ int _strlen(char *s)
 		indice++;
 	}
 	return (contador);
+}
+
+/**
+ * _strcat - Concatenates two strings
+ * @src: String 1
+ * @dest: String 2
+ * Return: A new string concatenated
+ */
+char *_strcat(char *src, char *dest)
+{
+	int i;
+	int j;
+	char *concatenated;
+
+	concatenated = malloc(1 + _strlen(src) + _strlen(dest));
+
+	for (i = 0; src[i] != '\0'; i++)
+	{
+		concatenated[i] = src[i];
+	}
+
+	for (j = 0; dest[j] != '\0'; j++)
+	{
+		concatenated[i + j] = dest[j];
+	}
+	concatenated[i + j] = '\0';
+
+	return (concatenated);
 }
