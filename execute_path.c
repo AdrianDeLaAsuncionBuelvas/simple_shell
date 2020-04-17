@@ -8,8 +8,8 @@ int execute_path(char **token, char **path, char **envi)
 	DIR *dr;
 	char *concat;
 	char *command_to_execute;
-	int forking;
-	int error;
+	int forking = 0;
+	int error = 0;
 
 	if (path == NULL)
 	{

@@ -11,10 +11,11 @@
 #include <fcntl.h>
 #include <signal.h>
 #include <dirent.h>
+extern char **environ;
 
 char *get_line(int isatty_value);
 char **func_strtok(char *mensaje);
-void execute_program(char **token, char *argv, int number, int isatty_value, char **envi);
+void execve_program(char **token, char *argv, int num, int isatty, char **env);
 int is_buitin(char **token);
 void free_memory(char **token);
 int _strlen(char *s);
@@ -24,6 +25,5 @@ char **get_path();
 int execute_path(char **token, char **path, char **envi);
 char *_strdup(char *str);
 char *_getenv(const char *name);
-extern char **environ;
 
 #endif

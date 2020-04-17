@@ -23,7 +23,7 @@ int main(int argc __attribute__((unused)), char **av, char **env)
 		{
 			number_prompts++;
 			tok = func_strtok(s);
-			execute_program(tok, av[0], number_prompts, val_isatty, env);
+			execve_program(tok, av[0], number_prompts, val_isatty, env);
 			free(s);
 			free(tok);
 		}
