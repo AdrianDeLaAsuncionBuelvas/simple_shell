@@ -23,7 +23,8 @@ char *_strcat(char *src, char *dest);
 char **get_path();
 int execute_path(char **token, char **path, char **envi);
 char *_strdup(char *str);
-char *_getenv(const char *name);
+char *_getenv_path();
+void my_puts(char *string);
 extern char **environ;
 
 #endif
