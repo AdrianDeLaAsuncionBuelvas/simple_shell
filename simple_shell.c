@@ -2,12 +2,13 @@
 
 /**
  * main - Executes all main functions
- * @argc: Number of arguments
- * @argv: Array of string pointers with arguments
- * Return: Nothing
+ * @ac: Number of arguments
+ * @av: Array of string pointers with arguments
+ * @env: receives the environment data
+ * Return: 0
  */
 
-int main(int argc __attribute__((unused)), char **av, char **env)
+int main(int ac __attribute__((unused)), char **av, char **env)
 {
 	char *s = NULL;
 	char **tok = NULL;

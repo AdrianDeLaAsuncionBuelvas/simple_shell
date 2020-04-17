@@ -1,13 +1,17 @@
 #include "shell.h"
+
+
 /**
  * _strcmp - Compares two strings
  * @s1: The string to test
  * @s2: The string to test
  * Return: An interer, the difference between strings
  */
+
 int _strcmp(char *s1, char *s2)
 {
 	int i = 0;
+
 	while (s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i])
 	{
 		i++;
@@ -21,10 +25,12 @@ int _strcmp(char *s1, char *s2)
  *
  * Return: Integer: The lenght of a string
  */
+
 int _strlen(char *s)
 {
 	int contador = 0;
 	int indice = 0;
+
 	while (s[indice] != '\0')
 	{
 		contador++;
@@ -39,6 +45,7 @@ int _strlen(char *s)
  * @dest: String 2
  * Return: A new string concatenated
  */
+
 char *_strcat(char *src, char *dest)
 {
 	int i;
@@ -67,6 +74,12 @@ char *_strcat(char *src, char *dest)
 	return (concatenated);
 }
 
+/**
+ * _getenv_path - get environment variable from path
+ *
+ * Return: NULL
+ */
+
 char *_getenv_path()
 {
 	int i;
@@ -74,10 +87,17 @@ char *_getenv_path()
 	for (i = 0; environ[i]; i++)
 	{
 		if (environ[i][0] == 'P' && environ[i][3] == 'H')
-			return(environ[i]);
+			return (environ[i]);
 	}
 	return (NULL);
 }
+
+/**
+ * my_puts - help with a strings
+ *
+ * @string: variable type char
+ */
+
 void my_puts(char *string)
 {
 	int i;
