@@ -1,5 +1,10 @@
 #include "shell.h"
 
+/**
+ * free_memory - function for free double pointers
+ * @token: variable to free
+ */
+
 void free_memory(char **token)
 {
 	int i;

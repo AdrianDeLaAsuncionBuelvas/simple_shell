@@ -1,22 +1,22 @@
 #include "shell.h"
 /**
  * get_line - Prints "$ " and wait for a command
- *
- * Return: The read command or error if not
+ * @isatty_value: check if it's an entry
+ * Return: buffer
  *
  **/
 char *get_line(int isatty_value)
 {
 	ssize_t characters_read = 0;
 	size_t num_bytes = 0;
-	char *mensaje = NULL;
+	char *buffer = NULL;
 
 	if (isatty_value == 1)
 	{
 		printf("$ ");
 	}
 
-	characters_read = getline(&mensaje, &num_bytes, stdin);
+	characters_read = getline(&buffer, &num_bytes, stdin);
 
 	if (characters_read == EOF)
 	{
@@ -24,8 +24,8 @@ char *get_line(int isatty_value)
 		{
 			printf("\n");
 		}
-		free(mensaje);
+		free(buffer);
 		exit(EXIT_SUCCESS);
 	}
-	return (mensaje);
+	return (buffer);
 }

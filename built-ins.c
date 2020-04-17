@@ -39,7 +39,7 @@ int is_buitin(char **token)
 
 	if (_strcmp(token[0], "env") == 0 && !(token[1]))
 	{
-		for (i = 0; environ[i] != '\0'; i++)
+		for (i = 0; environ[i]; i++)
 		{
 			my_puts(environ[i]);
 		}
