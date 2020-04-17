@@ -30,6 +30,8 @@ hsh \- Holberton-Simple Shell
 .br
 .B void execute_program(char **token, char *argv, int number);
 .br
+.B int execute_path(char **token, char **path, char **envi)
+.br
 .B int _env(int .PPcont);
 
 .SH DESCRIPTION

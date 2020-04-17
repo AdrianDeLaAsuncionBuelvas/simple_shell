@@ -8,7 +8,11 @@ char **get_path()
 	char **array_dirs = NULL;
 	int i = 0;
 
+<<<<<<< HEAD
 	getenv_value = _getenv("PATH");
+=======
+	getenv_value = _getenv_path();
+>>>>>>> c6db1cc0f79447b586c71a04d2f783bbdd320973
 	tokens = strtok(getenv_value, delimiter);
 	array_dirs = malloc(1024);
 	array_dirs[i] = tokens;

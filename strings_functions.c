@@ -67,58 +67,24 @@ char *_strcat(char *src, char *dest)
 	return (concatenated);
 }
 
-char *_getenv(const char *name)
+char *_getenv_path()
 {
-	char **env;
-	char *aux, *token, *value;
-	int size;
-	size = _strlen((char *) name);
-	for (env = environ; *env; ++env)
+	int i;
+
+	for (i = 0; environ[i]; i++)
 	{
-		aux = _strdup(*env);
-		token = strtok(aux, "=");
-		if (token == NULL)
-		{
-			free(aux);
-			return (NULL);
-		}
-		if (_strlen(token) != size)
-		{
-			free(aux);
-			continue;
-		}
-		if (_strcmp((char *) name, aux) == 0)
-		{
-			token = strtok(NULL, "=");
-			value = _strdup(token);
-			free(aux);
-			return (value);
-		}
-		free(aux);
+		if (environ[i][0] == 'P' && environ[i][3] == 'H')
+			return(environ[i]);
 	}
 	return (NULL);
 }
-
-char *_strdup(char *str)
+void my_puts(char *string)
 {
-	char *ptr;
 	int i;
-	int j;
 
-	if (str == NULL)
-		return (NULL);
-
-	for (j = 0; str[j] != '\0'; j++)
-		;
-
-	ptr = (char *)malloc(sizeof(char) * (j + 1));
-
-	if (ptr == NULL)
-		return (NULL);
-
-	for (i = 0; str[i] != '\0'; i++)
+	for (i = 0; string[i] != '\0'; i++)
 	{
-		ptr[i] = str[i];
+		write(1, &string[i], 1);
 	}
-	return (ptr);
+	write(1, "\n", 1);
 }

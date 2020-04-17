@@ -3,7 +3,7 @@
 int is_buitin(char **token)
 {
 	int chdir_value = 0;
-	int i;
+	int i = 0;
 
 	if(_strcmp(token[0], "exit") == 0 && !token[1])
 	{
@@ -36,9 +36,9 @@ int is_buitin(char **token)
 
 	if (_strcmp(token[0], "env") == 0 && !(token[1]))
 	{
-		for (i = 0; environ[i]; i++)
+		for (i = 0; environ[i] != '\0'; i++)
 		{
-			printf("%s\n", environ[i]);
+			my_puts(environ[i]);
 		}
 		return (1);
 	}
