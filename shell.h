@@ -22,14 +22,9 @@ int _strlen(char *s);
 int _strcmp(char *s1, char *s2);
 char *_strcat(char *src, char *dest);
 char **get_path();
-int execute_path(char **token, char **path, char **envi);
+int execute_path(char **token, char **path, char **env);
 char *_strdup(char *str);
-<<<<<<< HEAD
-char *_getenv(const char *name);
-=======
 char *_getenv_path();
 void my_puts(char *string);
-extern char **environ;
->>>>>>> c6db1cc0f79447b586c71a04d2f783bbdd320973
 
 #endif

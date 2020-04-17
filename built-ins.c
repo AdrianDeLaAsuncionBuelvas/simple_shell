@@ -1,15 +1,18 @@
 #include "shell.h"
 
+/**
+ * is_buitin - function to get token and compare it
+ * @token: commands that have been evaluated
+ * Return: 0 or  1
+ */
+
 int is_buitin(char **token)
 {
 	int chdir_value = 0;
 	int i = 0;
 
-	if(_strcmp(token[0], "exit") == 0 && !token[1])
-	{
-		free_memory(token);
-		exit(0);
-	}
+	if (_strcmp(token[0], "exit") == 0 && !token[1])
+		free_memory(token), exit(0);
 
 	if (_strcmp(token[0], "cd") == 0)
 	{
