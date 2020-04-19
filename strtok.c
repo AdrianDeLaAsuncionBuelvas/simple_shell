@@ -5,6 +5,7 @@
  * @mensaje: Input recieved from user input
  * Return: The token(s)
  */
+
 char **func_strtok(char *mensaje)
 {
 	char *delimiters = " ,!¡¿?'\"\n\t";

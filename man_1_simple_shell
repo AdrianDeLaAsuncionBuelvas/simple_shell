@@ -24,30 +24,71 @@ hsh \- Holberton-Simple Shell
 .B #include <fcntl.h>
 .br
 
-.B char *get_line(void);
+.B char *get_line(int isatty_value);
 .br
-.B char **func_strtok(char .*mensaje);
+.B char **func_strtok(char *buffer);
 .br
-.B void execute_program(char **token, char *argv, int number);
+.B void execve_program(char **token, char *argv, int num, int isatty, char **env);
 .br
-.B int execute_path(char **token, char **path, char **envi)
+.B int is_buitin(char **token);
 .br
-.B int _env(int .PPcont);
+.B char **get_path();
+.br
+.B int execute_path(char **token, char **path, char **env);
+.br
+.B char *_getenv_path();
+.br
+.B void my_puts(char *string);
+.br
+.B void free_memory(char **token);
+.br
+.B int _strlen(char *s);
+.br
+.B int _strcmp(char *s1, char *s2);
+.br
+.B char *_strcat(char *src, char *dest);
+.br
 
 .SH DESCRIPTION
-functions of our shell:
+In this project we put into practice all the knowledge acquired, and thus be able to do it.
 
+Functions of our shell:
 .br
 .B *get_line()
-Get the data sent by console. return the buffer.
+Get the data sent by console. isatty\- get a number to find out if it's an entry.  return the buffer.
 .br
-.B **func_strtok()
-Get buffer from getline, evaluate and concatenate. return the Token(s).
+.B func_strtok()
+double pointer function that receives the data from the getline and removes  the Tokens characters. *buffer\- get arguments received for getline. return the Tokens.
 .br
-.B void execute_program()
-Function where programs are created.
-**token \- Input recieved from strtok. *argv \- Arguments that send in the main.
-number \- Numbers of times executed.
+.B execve_program()
+Execute a program. **token\- receive the evaluated tokens. receive the arguments. num\- prompts numbers. isatty\- evaluates if it is an data entry. **env\- get environmental variable.
+.br
+.B is_buitin(char **token);
+auxiliary function to get token and compare it. **token\- receive the evaluated tokens.
+.br
+.B get_path()
+double pointer function tha evaluates directory PATH. return directory PATH.
+.br
+.B execute_path(char **token, char **path, char **env)
+Execute a program of PATH. **token\- receive the evaluated tokens. **path\- entry that will evaluate if it corresponds to PATH. **env\- environment varible. 
+.br
+.B char *_getenv_path()
+Evaluates the directory PATH. return directory PATH.
+.br
+.B my_puts()
+Help with a strings. *string\- receive a string and obtain the lenght.
+.br
+.B free_memory(char **token)
+Function for free double pointers. **token\- receive the evaluated tokens.
+.br
+.B _strlen(char *s)
+Count the lenght of a string. *s\- string to evaluted. return the lenght of a string.
+.br
+.B _strcmp(char *s1, char *s2)
+Compare two strings. *s1\- firts String to evaluated. *s2\- Second String to evaluated return An interer, the difference between strings.
+.br
+.B char *_strcat(char *src, char *dest)
+Concatenate two string. *src\- first string to concatenate. *dest\- second string to concatenates is the destiny. return A new string concatenated.
 .br
 
 .B Note:

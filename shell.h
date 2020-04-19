@@ -23,7 +23,6 @@ int _strcmp(char *s1, char *s2);
 char *_strcat(char *src, char *dest);
 char **get_path();
 int execute_path(char **token, char **path, char **env);
-char *_strdup(char *str);
 char *_getenv_path();
 void my_puts(char *string);
 
