@@ -42,8 +42,8 @@ int execute_path(char **token, char **path, char **env)
 				{
 					exec = execve(command_to_execute, token, env);
 					if (exec < 0)
-						closedir(dr), error = -1, exit(EXIT_FAILURE);
-					closedir(dr), error = 0, exit(EXIT_SUCCESS);
+						closedir(dr), error = -1, exit(0);
+					closedir(dr), error = 0, exit(0);
 				}
 			}
 		}

@@ -10,8 +10,9 @@ int is_buitin(char **token)
 {
 	int chdir_value = 0;
 	int i = 0;
+	char *ex = "exit";
 
-	if (_strcmp(token[0], "exit") == 0 && !token[1])
+	if (_strcmp(token[0], ex) == 0 && !token[1])
 		free_memory(token), exit(0);
 
 	if (_strcmp(token[0], "cd") == 0)
@@ -22,7 +23,7 @@ int is_buitin(char **token)
 			if (chdir_value != 0)
 			{
 				printf("Error changing directory\n");
-				return (1);
+				exit(0);
 			}
 			return (1);
 		}
@@ -32,7 +33,7 @@ int is_buitin(char **token)
 		if (chdir_value != 0)
 		{
 			printf("Error changing directory to: %s\n", token[1]);
-			return (1);
+			exit(0);
 		}
 		return (1);
 	}

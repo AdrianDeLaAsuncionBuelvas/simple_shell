@@ -25,7 +25,7 @@ char *get_line(int isatty_value)
 			printf("\n");
 		}
 		free(buffer);
-		exit(EXIT_SUCCESS);
+		exit(0);
 	}
 	return (buffer);
 }

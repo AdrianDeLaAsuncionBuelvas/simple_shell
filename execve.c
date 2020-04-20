@@ -24,7 +24,7 @@ void execve_program(char **token, char *argv, int num, int isatty, char **env)
 
 	childPID = fork();
 	if (childPID < 0)
-		printf("Error during fork\n"), free_memory(token), exit(EXIT_FAILURE);
+		printf("Error during fork\n"), free_memory(token), exit(0);
 
 	else if (childPID != 0)
 	{
@@ -43,12 +43,12 @@ void execve_program(char **token, char *argv, int num, int isatty, char **env)
 				if (isatty == 1)
 				{
 					printf("%s: No such file or directory\n", argv);
-					exit(EXIT_FAILURE);
+					exit(0);
 				}
 				printf("%s: %d: %s: not found\n", argv, num, token[0]);
-				exit(EXIT_FAILURE);
+				exit(0);
 			}
 		}
-		exit(EXIT_SUCCESS);
+		exit(0);
 	}
 }
