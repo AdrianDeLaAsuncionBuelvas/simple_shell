@@ -8,7 +8,7 @@
 
 char **func_strtok(char *mensaje)
 {
-	char *delimiters = " ,!¡¿?'\"\n\t";
+	char *delimiters = " ;,!¡¿?'\"\n\t";
 	char *token = NULL;
 	char **array = NULL;
 	int i = 0;

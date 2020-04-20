@@ -12,7 +12,7 @@ int is_buitin(char **token)
 	int i = 0;
 	char *ex = "exit";
 
-	if (_strcmp(token[0], ex) == 0 && !token[1])
+	if (_strcmp(token[0], ex) == 0)
 		free_memory(token), exit(0);
 
 	if (_strcmp(token[0], "cd") == 0)
