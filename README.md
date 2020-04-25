@@ -1,4 +1,4 @@
-<https://latorredev.com/assets/Img/Certifications/Holberton.png>
+(https://i.gifer.com/Dhtr.gif)
 
 # What is "the Shell"?
 
@@ -174,6 +174,6 @@ char *get_line(int isatty_value)
 
 ### AUTHORS
 
-#### Eduardo Vega <1643@holbertonschool.com>
+Eduardo Vega <1643@holbertonschool.com>
 
-#### Adrian De La Asuncion <1550@holbertonschool.com>
+Adrian De La Asuncion <1550@holbertonschool.com>
