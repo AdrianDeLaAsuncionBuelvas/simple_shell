@@ -1,4 +1,4 @@
-(https://i.gifer.com/Dhtr.gif)
+![ERROR IN LOADING IMAGE](https://i.gifer.com/Dhtr.gif)
 
 # What is "the Shell"?
 
