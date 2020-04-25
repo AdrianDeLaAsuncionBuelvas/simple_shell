@@ -1,4 +1,4 @@
-![ERROR IN LOADING IMAGE](https://i.gifer.com/Dhtr.gif)
+![ERROR IN LOADING IMAGE](https://camo.githubusercontent.com/9dc12aeae0ad15167388086260aecdabc90488e0/68747470733a2f2f692e696d6775722e636f6d2f6466583467416b2e676966)
 
 # What is "the Shell"?
 
